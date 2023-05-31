@@ -1,4 +1,4 @@
-from api.models import *
+from blog.models import *
 
 import graphene
 from graphene_django import DjangoObjectType
@@ -18,9 +18,12 @@ class BookType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     all_books = graphene.List(BookType)
-
     def resolve_all_books(self, info):
         return Book.objects.all()
+
+    book = graphene.Field(BookType, id=graphene.Int())
+    def resolve_book(self, info, id):
+        return Book.objects.get(pk=id)
 
 class CreateBook(graphene.Mutation):
     book = graphene.Field(BookType)
@@ -40,9 +43,11 @@ class Mutation(graphene.ObjectType):
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
 
-#query operation example:
+# Query operation example:
+
+# Query operation for all books:
 # query {
-#     book {
+#     allBooks {
 #       id
 #       title
 #       author
@@ -50,12 +55,23 @@ schema = graphene.Schema(query=Query, mutation=Mutation)
 #     }
 #   }
 
+# Query operation for a single book:
+# query {
+#     book(id: 1) {
+#       id
+#       title
+#       author
+#       description
+#     }
+#   }
+
+
 #Mutation operation example:
 # mutation {
 #   createBook(
-#     title: "Book Title"
-#     author: "Author Name"
-#     description: "Book Description"
+#     title: "Book Title 4"
+#     author: "Author Name 4"
+#     description: "Book Description 4"
 #   ) {
 #     book {
 #       id

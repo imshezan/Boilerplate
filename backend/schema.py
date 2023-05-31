@@ -1,17 +1,17 @@
 import graphene
 #import graphql_jwt
 
-import api.apiSchema
+import blog.apiSchema
 
 
 class Query(
-    api.apiSchema.Query, # Add your Query objects here
+    blog.apiSchema.Query, # Add your Query objects here
     graphene.ObjectType
 ):
     pass
 
 class Mutation(
-    api.apiSchema.Mutation, # Add your Mutation objects here
+    blog.apiSchema.Mutation, # Add your Mutation objects here
     graphene.ObjectType
 ):
     pass
