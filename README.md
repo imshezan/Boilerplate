@@ -13,12 +13,13 @@ Active venv Mac:
 Active venv Windows:
 `venv\Scripts\activate`
 
----------------
-যদি পাওয়ার শেল execuation error দেখায়: 
-`powershell -ExecutionPolicy Bypass` 
-Command for path configure: 
-`python -m ensurepip`
-
 #install requirement packages and run......
 `pip install -r requirements.txt`
 `python manage.py runserver`
+
+---------------
+>যদি পাওয়ার শেল execuation error দেখায়: 
+`powershell -ExecutionPolicy Bypass` 
+>Command for path configure: 
+`python -m ensurepip`
+
