@@ -30,9 +30,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #installed apps
     'bootstrap5',
-    'corsheaders',
-    "graphene_django",
-    'django_filters',
+  
+    "graphene_django",]
+
+# Apps for testing or in development
+if DEBUG: 
+    INSTALLED_APPS += [   
     'blog',
 ]
 
@@ -44,8 +47,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #installed middleware
-    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -126,12 +127,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-# Base url to serve media files
-STATIC_URL = '/static/'
 
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+# Base url to serve media files
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 
 # Default primary key field type
@@ -143,32 +144,7 @@ GRAPHENE = {
     'SCHEMA': 'backend.schema.schema',
 }
 
-# Cors headers settings
-CORS_ALLOW_ALL_ORIGINS: True
-CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOW_METHODS = [
-    "DELETE",
-    "GET",
-    "OPTIONS",
-    "PATCH",
-    "POST",
-    "PUT",
-]
-
-
-# LOGIN_URL = 'vendor:login'
-# LOGIN_REDIRECT_URL = 'vendor:vendor-admin'
-# LOGOUT_REDIRECT_URL = 'core:home'
-
-# SESSION_COOKIE_AGE = 86400 # Day in Seconds
-# CART_SESSION_ID = 'cart'
-
-
-# # STRIPE PAYMENT
-# STRIPE_PUB_KEY = 'pk_test_OKdhbDNME5KHtnpzYRBfNmEZ00mjM6DVsJ' # For JavaScript
-# STRIPE_SECRET_KEY = 'sk_test_jaIdMJOlkcUG6QpXV5wAJxXT005aZAJVM1' # For Django Backend
 
 # # For Email Notification
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

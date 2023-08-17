@@ -1,5 +1,6 @@
 # django boilerplate 
 **Bootstrap5 template**
+with
 **Graphql query & mutation**
 
 
@@ -20,6 +21,7 @@
 - [ ]  install requirement packages and run
 
   - `pip install -r requirements.txt`
+  or install with upgrade packages - `pip install -r requirements.txt --upgrade`
 
   - `python manage.py runserver`
 
